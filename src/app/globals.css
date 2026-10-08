@@ -1,4 +1,29 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
+@keyframes ticker {
+  
+  from {
+    transform: translateX(0);
+  }
+to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 180s linear infinite;
+}
+.ticker-group {
+  display: flex;
+  flex-shrink: 0;
+}
+.ticker-item {
+  flex-shrink: 0;
+  margin-right: 40px;
+  white-space: nowrap;
+}
 
 :root {
   --background: #ffffff;
