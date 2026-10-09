@@ -1,3 +1,7 @@
+import Link from "next/link";
+
+
+
 type Product = {
   id: number;
   nameBn: string;
@@ -16,7 +20,10 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <Link
+  href={`/product/${product.id}`}
+ className="block rounded-xl border border-gray-200 bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-md sm:p-4"
+>
       <div className="mb-3 text-3xl">{product.image}</div>
 
       <h3 className="font-bold text-gray-800">
@@ -37,11 +44,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         <span
   className={`text-sm font-semibold ${
-    product.change.dir === "up"
-      ? "text-green-600"
-      : product.change.dir === "down"
-        ? "text-red-600"
-        : "text-gray-500"
+   product.change.dir === "up" ? "text-red-600" :
+product.change.dir === "down" ? "text-green-600" : "text-gray-500"
   }`}
 >
   {product.change.dir === "up"
@@ -55,6 +59,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   })}%
 </span>
       </div>
-    </article>
+    </Link>
   );
 }
+

@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="w-[80%] mx-auto mt-6 rounded-3xl border border-gray-200 bg-white p-4">
+    <section className="mx-auto mt-6 w-[80%] rounded-3xl border border-gray-200 bg-white p-4">
   <div className="flex items-center justify-between gap-8">
     
     <div className="flex-1">
@@ -29,7 +29,7 @@ export default function Hero() {
   <img
     src="/bazar-hero.png"
     alt="বাজার দর"
-    className="w-[40%]"
+    className="w-[40%] h-auto object-contain"
   />
 </div>
       </div>
