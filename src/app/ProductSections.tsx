@@ -1,4 +1,6 @@
+
 import ProductCard from "./components/ProductCard";
+import SortableProducts from "./SortableProducts";
 
 type Product = {
   id: number;
@@ -7,7 +9,7 @@ type Product = {
   today: number;
   unit: string;
   change: {
-    dir: "up" | "down";
+    dir: "up" | "down" | "flat";
     pct: number;
   };
 };
@@ -30,15 +32,13 @@ export default function ProductSections({
     .slice(0, 6);
 
   return (
-    <section className="w-[80%] mx-auto my-10 space-y-10">
-
-        
+    <section className="mx-auto my-10 w-[80%] space-y-10">
       <div>
-        <h2 className="text-2xl font-bold mb-5">
-        আজ দাম বেড়েছে <span className="text-red-600">▲</span>
+        <h2 className="mb-5 text-2xl font-bold">
+          আজ দাম বেড়েছে <span className="text-red-600">▲</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {risers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -46,11 +46,11 @@ export default function ProductSections({
       </div>
 
       <div>
-        <h2 className="text-2xl font-bold mb-5">
+        <h2 className="mb-5 text-2xl font-bold">
           আজ দাম কমেছে <span className="text-green-600">▼</span>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {fallers.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
@@ -58,19 +58,13 @@ export default function ProductSections({
       </div>
 
       <div id="সব-পণ্য">
-        <h2 className="text-2xl font-bold">
-          সব পণ্য
-        </h2>
+        <h2 className="text-2xl font-bold">সব পণ্য</h2>
 
-        <p className="text-gray-500 mt-2 mb-5">
+        <p className="mb-5 mt-2 text-gray-500">
           নিত্যপ্রয়োজনীয় পণ্যের আজকের দাম এক নজরে দেখুন।
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <SortableProducts products={products} />
       </div>
     </section>
   );

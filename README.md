@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# বাজার দর | BazarDor
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**BazarDor** is a Bengali-language daily market price application that helps users explore essential grocery products, browse categories, and check product prices easily. The application provides a simple and user-friendly experience for finding everyday market information.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js** – React framework for building the application
+- **React** – Building interactive user interfaces
+- **TypeScript** – Type-safe JavaScript development
+- **Tailwind CSS** – Responsive and modern styling
+- **REST API** – Fetching product, category, and pricing data
+- **Git & GitHub** – Version control and source code management
 
-## Learn More
+## Key Features
 
-To learn more about Next.js, take a look at the following resources:
+1. **Product Listing:** Browse available grocery products and their prices.
+2. **Category-Based Browsing:** Explore products by category.
+3. **Product Details:** View detailed information about individual products.
+4. **Responsive Design:** Enjoy a user-friendly experience on mobile, tablet, and desktop devices.
+5. **Bengali-Friendly Interface:** Explore everyday market information through a familiar Bengali-focused application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Purpose
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+BazarDor aims to make everyday market price information easier to access and help users explore essential grocery items conveniently.

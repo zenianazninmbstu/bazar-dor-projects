@@ -6,7 +6,7 @@ type Product = {
   id: number;
   nameBn: string;
   image: string;
-  today: number;
+  today: number | string;
   unit: string;
   change: {
     dir: "up" | "down" | "flat";
@@ -38,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div>
           <p className="text-xs text-gray-500">আজকের দাম</p>
           <p className="font-bold text-gray-900">
-            {product.today.toLocaleString("bn-BD")} টাকা
+           {Number(product.today).toLocaleString("bn-BD")} টাকা
           </p>
         </div>
 
