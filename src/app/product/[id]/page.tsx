@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 
 type Product = {
   id: number;
@@ -35,9 +36,9 @@ export default async function ProductDetailsPage({ params }: Props) {
      `https://api.api-store.workers.dev/api/bazardor/products/${id}`
   );
 
-  if (!res.ok) {
-    return <main className="p-10">পণ্যটি পাওয়া যায়নি।</main>;
-  }
+ if (!res.ok) {
+  notFound();
+}
 
   const product: Product = await res.json();
 

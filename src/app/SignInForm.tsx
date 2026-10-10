@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
@@ -11,6 +12,7 @@ export default function SignInForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+
 
   async function handleSignIn(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -24,13 +26,18 @@ export default function SignInForm() {
       });
 
       if (error) {
-        setMessage(error.message || "সাইন ইন করা যায়নি।");
+        const errorMessage = error.message || "সাইন ইন করা যায়নি।";
+        setMessage(errorMessage);
+        toast.error(errorMessage);
         return;
       }
 
+      toast.success("সফলভাবে সাইন ইন হয়েছে!");
       window.location.href = "/";
     } catch {
-      setMessage("সমস্যা হয়েছে। আবার চেষ্টা করো।");
+      const errorMessage = "সমস্যা হয়েছে। আবার চেষ্টা করো।";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -47,11 +54,16 @@ export default function SignInForm() {
       });
 
       if (error) {
-        setMessage(error.message || "Google দিয়ে সাইন ইন করা যায়নি।");
+        const errorMessage =
+          error.message || "Google দিয়ে সাইন ইন করা যায়নি।";
+        setMessage(errorMessage);
+        toast.error(errorMessage);
         setGoogleLoading(false);
       }
     } catch {
-      setMessage("Google দিয়ে সাইন ইন করা যায়নি।");
+      const errorMessage = "Google দিয়ে সাইন ইন করা যায়নি।";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
       setGoogleLoading(false);
     }
   }
