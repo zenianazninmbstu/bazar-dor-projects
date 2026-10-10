@@ -1,9 +1,9 @@
-
 "use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 export default function SignupForm() {
   const [name, setName] = useState("");
@@ -26,13 +26,20 @@ export default function SignupForm() {
       });
 
       if (error) {
-        setMessage(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি।");
+        const errorMessage =
+          error.message || "অ্যাকাউন্ট তৈরি করা যায়নি।";
+
+        setMessage(errorMessage);
+        toast.error(errorMessage);
         return;
       }
 
+      toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
       window.location.href = "/sign-in";
     } catch {
-      setMessage("সমস্যা হয়েছে। আবার চেষ্টা করো।");
+      const errorMessage = "সমস্যা হয়েছে। আবার চেষ্টা করো।";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -49,11 +56,17 @@ export default function SignupForm() {
       });
 
       if (error) {
-        setMessage(error.message || "Google দিয়ে চালিয়ে যাওয়া যায়নি।");
+        const errorMessage =
+          error.message || "Google দিয়ে চালিয়ে যাওয়া যায়নি।";
+
+        setMessage(errorMessage);
+        toast.error(errorMessage);
         setGoogleLoading(false);
       }
     } catch {
-      setMessage("Google দিয়ে চালিয়ে যাওয়া যায়নি।");
+      const errorMessage = "Google দিয়ে চালিয়ে যাওয়া যায়নি।";
+      setMessage(errorMessage);
+      toast.error(errorMessage);
       setGoogleLoading(false);
     }
   }
@@ -72,7 +85,10 @@ export default function SignupForm() {
 
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
-            <label htmlFor="signup-name" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="signup-name"
+              className="mb-1 block text-sm font-medium"
+            >
               আপনার নাম
             </label>
             <input
@@ -88,7 +104,10 @@ export default function SignupForm() {
           </div>
 
           <div>
-            <label htmlFor="signup-email" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="signup-email"
+              className="mb-1 block text-sm font-medium"
+            >
               ইমেইল
             </label>
             <input
@@ -104,7 +123,10 @@ export default function SignupForm() {
           </div>
 
           <div>
-            <label htmlFor="signup-password" className="mb-1 block text-sm font-medium">
+            <label
+              htmlFor="signup-password"
+              className="mb-1 block text-sm font-medium"
+            >
               পাসওয়ার্ড
             </label>
             <input
@@ -141,16 +163,41 @@ export default function SignupForm() {
           disabled={loading || googleLoading}
           className="flex w-full items-center justify-center gap-2 rounded-lg border border-gray-300 px-4 py-3 font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-60"
         >
-          {googleLoading
-            ? "Google-এর সঙ্গে সংযোগ হচ্ছে..."
-            : "Google দিয়ে চালিয়ে যান"}
+          {googleLoading ? (
+  "Google-এর সঙ্গে সংযোগ হচ্ছে..."
+) : (
+  <>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+      className="h-5 w-5"
+      aria-hidden="true"
+    >
+      <path
+        fill="#EA4335"
+        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 3.05 13.22l7.98 6.19C12.92 13.72 18.05 9.5 24 9.5Z"
+        transform="translate(0 4)"
+      />
+      <path
+        fill="#4285F4"
+        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.74 7.18l7.64 5.93c4.46-4.13 7.14-10.2 7.14-17.58Z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M10.03 28.59a14.4 14.4 0 0 1 0-9.18l-7.98-6.19a24 24 0 0 0 0 21.56l7.98-6.19Z"
+        transform="translate(0 0)"
+      />
+      <path
+        fill="#34A853"
+        d="M24 48c6.48 0 11.93-2.13 15.9-5.87l-7.64-5.93c-2.13 1.43-4.84 2.3-8.26 2.3-5.95 0-11.08-4.02-12.97-9.44l-7.98 6.19C6.51 43.62 14.62 48 24 48Z"
+      />
+    </svg>
+    <span>Google দিয়ে চালিয়ে যান</span>
+  </>
+)}
         </button>
 
-        {message && (
-          <p role="status" className="mt-4 text-center text-sm text-red-600">
-            {message}
-          </p>
-        )}
+       
 
         <p className="mt-6 text-center text-sm text-gray-600">
           আগে থেকেই অ্যাকাউন্ট আছে?{" "}
@@ -174,4 +221,3 @@ export default function SignupForm() {
     </main>
   );
 }
-

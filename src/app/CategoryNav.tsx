@@ -18,7 +18,7 @@ export default function CategoryNav({ categories }: CategoryNavProps) {
 
   return (
     <div className="border-b border-gray-200">
-  <div className="w-[80%] mx-auto py-2">
+  <div className="mx-auto flex w-[80%] flex-wrap gap-3 py-2">
       {categories.map((category) => {
         const isActive = pathname === `/category/${category.slug}`;
 

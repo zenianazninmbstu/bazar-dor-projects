@@ -1,8 +1,7 @@
 
 import { notFound } from "next/navigation";
-import Navbar from "../../Navbar";
-import CategoryNav from "../../CategoryNav";
-import PriceTicker from "../../PriceTicker";
+
+
 
 import CategoryProducts from "../../CategoryProducts";
 
@@ -31,7 +30,7 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
-const API = "https://api.api-store.workers.dev/api/bazardor";
+const API = "https://openapi.programming-hero.com/api/bazardor";
 
 export default async function CategoryPage({ params }: Props) {
   const { slug } = await params;
@@ -41,6 +40,7 @@ export default async function CategoryPage({ params }: Props) {
     fetch(`${API}/categories`),
     fetch(`${API}/products?category=${slug}`),
   ]);
+
 
   if (!categoryRes.ok) notFound();
 
@@ -54,11 +54,7 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <main className="min-h-[70vh]">
-      <nav>
-        <Navbar />
-        <CategoryNav categories={categories} />
-        <PriceTicker products={products} />
-      </nav>
+     
 
       <section className="mx-auto w-[80%] py-8">
         <div className="rounded-2xl border border-green-100 bg-green-50 p-6 sm:p-8">

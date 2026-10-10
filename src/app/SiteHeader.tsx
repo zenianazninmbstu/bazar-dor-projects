@@ -5,7 +5,7 @@ import PriceTicker from "./PriceTicker";
 
 async function getCategories() {
   const res = await fetch(
-   "https://api.api-store.workers.dev/api/bazardor/categories"
+   "https://openapi.programming-hero.com/api/bazardor/categories"
   );
 
   if (!res.ok) return [];
@@ -15,7 +15,7 @@ async function getCategories() {
 
 async function getProducts() {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products"
+    "https://openapi.programming-hero.com/api/bazardor/products"
   );
 
   if (!res.ok) return [];

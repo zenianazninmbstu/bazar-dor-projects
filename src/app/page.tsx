@@ -1,14 +1,13 @@
 
-import CategoryNav from "./CategoryNav";
-import PriceTicker from "./PriceTicker";
+
 import Hero from "./Hero";
 import ProductSections from "./ProductSections";
-import Navbar from "./Navbar";
+
 
 
 async function getCategories() {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories"
+   "https://openapi.programming-hero.com/api/bazardor/categories"
   );
 
   if (!res.ok) {
@@ -21,7 +20,7 @@ async function getCategories() {
 
 async function getProducts() {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products"
+    "https://openapi.programming-hero.com/api/bazardor/products"
   );
 
   if (!res.ok) {
@@ -37,16 +36,15 @@ export default async function Home() {
   console.log(categories);
     console.log(products);
 
-  return (
-  <main>
-  <nav>
-<Navbar />
-<CategoryNav categories={categories} />
-<PriceTicker products={products} />
+    console.log("Categories type:", Array.isArray(categories));
+console.log("Products type:", Array.isArray(products));
 
-      </nav>
-      <Hero />
-       <ProductSections products={products} />
-    </main>
-  );
+ 
+ return (
+  <>
+    <Hero />
+    <ProductSections products={products} />
+  </>
+);
+
 }

@@ -31,8 +31,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       </h3>
 
       <p className="mt-1 text-sm text-gray-500">
-        প্রতি {product.unit}
-      </p>
+  প্রতি {
+    product.unit === "kg" ? "কেজি" :
+    product.unit === "litre" ? "লিটার" :
+    product.unit === "liter" ? "লিটার" :
+    product.unit === "dozen" ? "ডজন" :
+    product.unit === "piece" ? "টি" :
+    product.unit
+  }
+</p>
 
       <div className="mt-4 flex items-center justify-between gap-2">
         <div>
