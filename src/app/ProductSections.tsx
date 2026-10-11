@@ -32,7 +32,7 @@ export default function ProductSections({
     .slice(0, 6);
 
   return (
-    <section className="mx-auto my-10 w-[80%] space-y-10">
+    <section className="mx-auto my-10 w-full max-w-6xl px-4 space-y-10">
       <div>
         <h2 className="mb-5 text-2xl font-bold">
           আজ দাম বেড়েছে <span className="text-red-600">▲</span>

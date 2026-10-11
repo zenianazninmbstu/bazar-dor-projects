@@ -27,8 +27,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="mx-auto mt-6 w-[80%] rounded-3xl border border-gray-200 bg-white p-4">
-      <div className="flex items-center justify-between gap-8">
+    <section className="mx-auto mt-6 w-full max-w-6xl rounded-3xl border border-gray-200 bg-white p-4 sm:p-6">
+     <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1">
           <p className="inline-block rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
             {formattedDate || "তারিখ লোড হচ্ছে..."}
@@ -50,13 +50,15 @@ export default function Hero() {
 </a>
         </div>
 
-        <div className="flex flex-1 justify-end">
-          <img
-            src="/bazar-hero.png"
-            alt="বাজার দর"
-            className="h-auto w-[40%] object-contain"
-          />
-        </div>
+      
+<div className="flex w-full flex-1 justify-center md:justify-end">
+  <img
+    src="/bazar-hero.png"
+    alt="বাজার দর"
+    className="h-auto w-3/4 max-w-xs object-contain md:w-[40%]"
+  />
+</div>
+
       </div>
     </section>
   );

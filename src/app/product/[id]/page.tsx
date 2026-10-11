@@ -29,6 +29,20 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
+function getUnitBn(unit: string) {
+  const units: Record<string, string> = {
+    kg: "কেজি",
+    kilogram: "কেজি",
+    liter: "লিটার",
+    litre: "লিটার",
+    l: "লিটার",
+    piece: "পিস",
+    pcs: "পিস",
+  };
+
+  return units[unit.toLowerCase()] ?? unit;
+}
+
 export default async function ProductDetailsPage({ params }: Props) {
   const { id } = await params;
 
@@ -84,7 +98,7 @@ const averagePrice = Math.round(
       <p className="mt-1 text-xs text-gray-500">
         {product.categoryNameBn} · প্রতি কেজি
       </p>
-    
+
 <p className="mt-1 text-xs text-gray-600">
   গতকালের তুলনায় আজ দাম{" "}
   <span className={`font-semibold ${product.change.dir === "up" ? "text-red-600" : product.change.dir === "down" ? "text-green-600" : "text-gray-600"}`}>
@@ -125,7 +139,9 @@ const averagePrice = Math.round(
 
         <h1 className="mt-4 text-3xl font-bold">{product.nameBn}</h1>
 
-        <p className="mt-2 text-gray-500">প্রতি {product.unit}</p>
+        <p className="mt-2 text-gray-500">
+  প্রতি {getUnitBn(product.unit)}
+</p>
 
         
 
@@ -163,7 +179,7 @@ const averagePrice = Math.round(
     </p>
 
  <p className="mt-2 text-sm text-gray-500">
-  প্রতি কেজি হিসাবে
+  প্রতি {getUnitBn(product.unit)} হিসাবে
 </p>
   </div>
 </div>

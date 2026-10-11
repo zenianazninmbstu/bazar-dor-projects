@@ -3,6 +3,7 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "./components/ProductCard";
+import Link from "next/link";
 
 type Product = {
   id: number;
@@ -64,11 +65,22 @@ export default function CategoryProducts({ products }: Props) {
         ))}
       </div>
 
-      {products.length === 0 && (
-        <p className="py-10 text-center text-gray-500">
-          এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।
-        </p>
-      )}
+     
+{products.length === 0 && (
+  <div className="py-10 text-center">
+    <p className="text-gray-500">
+      এই ক্যাটাগরিতে কোনো পণ্য পাওয়া যায়নি।
+    </p>
+
+    <Link
+      href="/"
+      className="mt-4 inline-block rounded-lg bg-green-600 px-5 py-3 font-semibold text-white hover:bg-green-700"
+    >
+      হোম পেজে ফিরে যান
+    </Link>
+  </div>
+)}
+
     </section>
   );
 }

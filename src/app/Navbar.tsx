@@ -46,7 +46,16 @@ export default function Navbar() {
 
           <div>
             <h1 className="text-lg font-bold">বাজার দর</h1>
-            <p className="text-xs">বাজারের সর্বশেষ দাম</p>
+            
+<p className="text-xs text-gray-500">
+  {new Date().toLocaleDateString("bn-BD", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })}
+</p>
+
           </div>
         </Link>
 

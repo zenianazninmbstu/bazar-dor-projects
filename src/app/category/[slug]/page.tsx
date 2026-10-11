@@ -65,8 +65,8 @@ export default async function CategoryPage({ params }: Props) {
             {category.icon} {category.nameBn}
           </h1>
           <p className="mt-3 text-sm text-gray-600">
-            {category.nameBn} বিভাগের আজকের বাজারদর দেখুন।
-          </p>
+  {products.length.toLocaleString("bn-BD")}টি পণ্যের আজকের দাম ও পরিবর্তন
+</p>
         </div>
 
         <CategoryProducts products={products} />
