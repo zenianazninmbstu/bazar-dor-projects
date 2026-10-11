@@ -14,6 +14,21 @@ type PriceTickerProps = {
   products: Product[];
 };
 
+
+function translateUnit(unit: string) {
+  const units: Record<string, string> = {
+    kg: "কেজি",
+    kilogram: "কেজি",
+    liter: "লিটার",
+    litre: "লিটার",
+    l: "লিটার",
+    dozen: "ডজন",
+    piece: "টি",
+  };
+
+  return units[unit.toLowerCase()] || unit;
+}
+
 export default function PriceTicker({ products }: PriceTickerProps) {
   return (
    <div className="overflow-hidden border-b py-2 w-screen relative left-1/2 -translate-x-1/2 border-gray-200">
@@ -23,7 +38,7 @@ export default function PriceTicker({ products }: PriceTickerProps) {
           {products.map((product) => (
             <div key={product.id} className="ticker-item">
               {product.image} {product.nameBn} · {product.today} টাকা/
-              {product.unit} ·{" "}
+             {translateUnit(product.unit)} ·{" "}
               <span
                 className={
                   product.change.dir === "up"
@@ -42,7 +57,7 @@ export default function PriceTicker({ products }: PriceTickerProps) {
           {products.map((product) => (
             <div key={product.id} className="ticker-item">
               {product.image} {product.nameBn} · {product.today} টাকা/
-              {product.unit} ·{" "}
+              {translateUnit(product.unit)} ·{" "}
               <span
                 className={
                   product.change.dir === "up"
