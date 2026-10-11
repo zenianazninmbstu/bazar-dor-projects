@@ -1,10 +1,12 @@
-
+import dns from "node:dns"
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { MongoClient } from "mongodb";
 
+dns.setServers(["8.8.8.8","8.8.4.4"])
+
 const client = new MongoClient(process.env.MONGODB_URI!);
-const db = client.db("bazar-dor");
+const db = client.db("bazar_dor");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db),
